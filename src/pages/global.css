@@ -4,19 +4,23 @@
 }
 
 .dashboard-container{
-    background-color: #000000;
+    background-color: #ffffff;
     display: flex;
     height: 100vh;
     flex-direction: row;
 }
 .menu{
     width: 20%;
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
     margin: 5px
     
 }
 .principal{
     width: 80%;
-    background-color: rgb(255, 255, 255);
-    margin: 5px
+    background-color: rgb(1, 0, 0);
+    margin: 5px;
+    color: #000000;
+}
+tr{
+    background-color: #ffffff;
 }

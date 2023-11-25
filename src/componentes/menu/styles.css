@@ -2,19 +2,21 @@ nav{
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+    text-align: center;
 }
 .link{
     text-decoration: none;
     color: inherit;
-    background-color: #007bff;
+    background-color: #f00000;
     border-radius: 5px;
     padding: 10px 15px;
     width: 85%;
     transition: .4s;
     margin: auto;
     margin-bottom: 8px;
-    color: aliceblue;
+    color: rgb(0, 0, 0);;
 }
 .link:hover{
-    background-color: #0056b3;
+    background-color: #dc0000;
+    color: aliceblue;
 }
