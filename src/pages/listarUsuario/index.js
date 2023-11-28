@@ -1,5 +1,5 @@
 import '../../pages/global.css'
-
+import{ FiEdit,FiTrash,FiDelete, FiFilePlus }from "react-icons/fi";
 import Menu from '../../componentes/menu';
 
 
@@ -20,11 +20,13 @@ export default function Listausuario(){
             </div>
             <div className='principal'>
                 <h1>Lista de Usuário </h1>
-                <table border={1}>
+                <button className='btn-novo'> Novo Cadastro</button>
+                <table >
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
                         <th>Email</th>
+                        <th></th>
                         <th></th>
                     </tr>
                     {
@@ -34,6 +36,10 @@ export default function Listausuario(){
                                     <td>{usu.id}</td>
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
+                                    <td className='botoes'> <FiEdit size={20} color='blue'/>
+                                    </td>
+                                    <td className='botoes'> <FiTrash size={20} color='red'/>
+                                    </td>
                                     
                                 </tr>
                             )

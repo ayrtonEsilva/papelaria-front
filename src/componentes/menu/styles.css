@@ -7,16 +7,19 @@ nav{
 .link{
     text-decoration: none;
     color: inherit;
-    background-color: #f00000;
+    background-color: #1f28a7;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px 2px;
     width: 85%;
     transition: .4s;
     margin: auto;
     margin-bottom: 8px;
-    color: rgb(0, 0, 0);;
+    color: rgb(255, 255, 255);;
+
 }
 .link:hover{
-    background-color: #dc0000;
-    color: aliceblue;
+    background-color: #ffffff;
+    color: #1f28a7;
+    border: 1px solid #1f28a7;
+    padding: 10px 15px;
 }
