@@ -38,6 +38,8 @@ td{
     padding: 8px;
     color: #000000;
     background-color: rgb(255, 255, 255);
+    border: solid 0.5px rgb(196, 233, 255);
+    transition: 0.3s;
 }
 td:hover{
     background-color: rgb(196, 233, 255);
@@ -45,9 +47,25 @@ td:hover{
 }
 table{
     width: 100%;
-    border: solid 1px #070c4e;
 
 }
+
 .botoes:hover{
     cursor: pointer;
+    
+}
+.btn-novo{
+    padding: 9px;
+    display: flex;
+    width: 120%;
+    cursor: pointer;background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: solid 0.5px rgb(196, 233, 255);
+    margin-bottom: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.btn-novo:hover{
+    background-color: rgb(24, 196, 24);
 }
