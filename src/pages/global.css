@@ -57,7 +57,7 @@ table{
 .btn-novo{
     padding: 9px;
     display: flex;
-    width: 120%;
+    width: 10%;
     cursor: pointer;background-color: green;
     color: white;
     border-radius: 5px;
