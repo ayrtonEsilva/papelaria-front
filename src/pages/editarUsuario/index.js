@@ -9,13 +9,12 @@ import {Link, Navigate, useNavigate} from 'react-router-dom'
 import Head from '../../componentes/Head';
 
 
-export default function Cadastrousuario(){
+export default function Editarusuario(){
     const navigate = useNavigate();
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const usuario={
-        id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
         nome,
         email,
         senha
@@ -50,7 +49,7 @@ export default function Cadastrousuario(){
                 <Menu />
             </div>
             <div className='principal'>
-                <Head title='Cadastro de Usuário'/>
+                <Head title='Editar Usuário'/>
 
                 <div class="form-container">
                     <form className='form-cadastro' onSubmit={salvardados}>
