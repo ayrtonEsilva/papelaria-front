@@ -1,23 +1,36 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import '../../pages/global.css'
 import{ FiFilePlus }from "react-icons/fi";
 import { FaSave } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import Menu from '../../componentes/menu';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import {Link, Navigate, useNavigate, useParams} from 'react-router-dom'
 import Head from '../../componentes/Head';
 
 
 export default function Editarusuario(){
+    const id = useParams.id;
     const navigate = useNavigate();
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [banco, setBanco] = useState([])
     const usuario={
         nome,
         email,
         senha
+    }
+
+    useEffect(()=>{
+        mostrardados();
+    },[])
+    function mostrardados(){
+        setBanco(JSON.parse(localStorage.getItem("cd-usuarios") || "[]"));
+        let dadosnovos = banco.filter(item => item.id == id);
+        setNome(dadosnovos.nome);
+        setEmail(dadosnovos.nome);
+        setSenha(dadosnovos.nome);
     }
 
 
