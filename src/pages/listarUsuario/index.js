@@ -9,6 +9,7 @@ import Head from '../../componentes/Head';
 import Editarusuario from '../editarUsuario';
 
 
+
 export default function Listausuario(){
     const [dados, setDados] = useState([]);
     const [banco, setBanco] = useState([]);
@@ -72,13 +73,15 @@ export default function Listausuario(){
                         <th></th>
                     </tr>
                     {
-                        banco.map((usu)=>{
+                        banco.map((usu))=>{
+
                             return(
                                 <tr key={usu.toString()}>
                                     <td>{usu.id}</td>
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
                                     <td className='botoes'> 
+                                    <Link to={`/editarusuario/${linha.id}`}>
                                     <FiEdit size={20} 
                                     color='blue'
                                     onClick={(e)=>Editarusuario}
@@ -94,8 +97,13 @@ export default function Listausuario(){
                                     
                                 </tr>
                             )
-                        })
-                    }
+                        
+                        }
+                            
+
+                    }                
+                        
+                    
 
                 </table>
             </div>
