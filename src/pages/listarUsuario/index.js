@@ -73,7 +73,7 @@ export default function Listausuario(){
                         <th></th>
                     </tr>
                     {
-                        banco.map((usu))=>{
+                        banco.map((usu)=>{
 
                             return(
                                 <tr key={usu.toString()}>
@@ -81,13 +81,15 @@ export default function Listausuario(){
                                     <td>{usu.nome}</td>
                                     <td>{usu.email}</td>
                                     <td className='botoes'> 
-                                    <Link to={`/editarusuario/${linha.id}`}>
+                                    <Link to={`/editarusuario/${usu.id}`} >
                                     <FiEdit size={20} 
                                     color='blue'
                                     onClick={(e)=>Editarusuario}
                                     />
+                                    </Link>
                                     </td>
                                     <td className='botoes'> 
+                     
                                     <FiTrash 
                                     size={20} 
                                     color='red'
@@ -98,7 +100,7 @@ export default function Listausuario(){
                                 </tr>
                             )
                         
-                        }
+                        })
                             
 
                     }                
