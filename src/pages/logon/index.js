@@ -12,15 +12,19 @@ const [senha, setSenha] = useState();
 
 const logar =(e)=>{
     e.preventDefault();
-    let banco = JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+    let banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+    
+    
     let dadosnovos = banco.filter(item => item.email === email && item.senha === senha);
-    if (dadosnovos.length>0){
-        navigate('/Dashboard');
+    console.log(banco);
+    if(dadosnovos.length>0){
+        navigate('/dashboard');
     }else{
-        alert("dados incorretos")
+        alert("Dados incorretos!!!");
     }
-
-}
+    
+    
+    }
 
     return(
         <div className="logon-container">
@@ -31,15 +35,15 @@ const logar =(e)=>{
                 <h1 className="">Faça seu login</h1>
                 <form onSubmit={logar}>
                     <input placeholder="Email" 
+                    onChange={e=>setEmail(e.target.value)}
                     value ={email}
                     />
                     
-                    onChange={e=>setEmail(e.target.value)}
                     <input placeholder="Senha" type='password' 
+                    onChange={e=>setSenha(e.target.value)}
                     value={senha}
                     />
                     
-                    onChange={e=>setSenha(e.target.value)}
                     <button type="submit">Entrar</button>
                     <a href="#">Novo Cadastro</a>
                 </form>
