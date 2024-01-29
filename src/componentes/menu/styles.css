@@ -1,0 +1,25 @@
+nav{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    text-align: center;
+}
+.link{
+    text-decoration: none;
+    color: inherit;
+    background-color: #1f28a7;
+    border-radius: 5px;
+    padding: 10px 2px;
+    width: 85%;
+    transition: .3s;
+    margin: auto;
+    margin-bottom: 8px;
+    color: rgb(255, 255, 255);;
+
+}
+.link:hover{
+    background-color: #ffffff;
+    color: #1f28a7;
+    border: 1px solid #1f28a7;
+    padding: 10px 10px;
+}
