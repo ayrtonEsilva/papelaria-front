@@ -14,13 +14,7 @@ export default function Listaprodutos(){
     const [dados, setDados] = useState([]);
     const [banco, setBanco] = useState([]);
 
-    // const dados = [
-    //     {id:1,nome:"carlos",email:"carlos@gmail.com",Senha:"123"},
-    //     {id:2,nome:"Felipe",email:"felipe@gmail.com",Senha:"321"},
-    //     {id:3,nome:"Ayrton",email:"ayrton@gmail.com",Senha:"321"},
-    //     {id:4,nome:"Nilson",email:"nilson@gmail.com",Senha:"321"},
-    //     {id:5,nome:"Nero",email:"nero@gmail.com",Senha:"321"}
-    // ]
+   
 
     useEffect(()=>{
         mostrardados();
@@ -33,7 +27,7 @@ export default function Listaprodutos(){
 
    const Apagar = (id) => {
         confirmAlert({
-          title: 'Excluir prduto',
+          title: 'Excluir produto',
           message: 'Tem certeza que deseja excluir este produto?',
           buttons: [
             {
@@ -73,17 +67,17 @@ export default function Listaprodutos(){
                         <th>estoque máximo</th>
                     </tr>
                     {
-                        banco.map((usu)=>{
+                        banco.map((pro)=>{
 
                             return(
-                                <tr key={usu.toString()}>
-                                    <td>{usu.id}</td>
-                                    <td>{usu.status}</td>
-                                    <td>{usu.descricao}</td>
-                                    <td>{usu.estoque_minimo}</td>
-                                    <td>{usu.estoque_maximo}</td>
+                                <tr key={pro.toString()}>
+                                    <td>{pro.id}</td>
+                                    <td>{pro.status}</td>
+                                    <td>{pro.descricao}</td>
+                                    <td>{pro.estoque_minimo}</td>
+                                    <td>{pro.estoque_maximo}</td>
                                     <td className='botoes'> 
-                                    <Link to={`/editarprodutos/${usu.id}`} >
+                                    <Link to={`/editarprodutos/${pro.id}`} >
                                     <FiEdit size={20} 
                                     color='blue'
                                     onClick={(e)=>Editarusuario}
@@ -95,7 +89,7 @@ export default function Listaprodutos(){
                                     <FiTrash 
                                     size={20} 
                                     color='red'
-                                    onClick={(e)=>Apagar(usu.id)}
+                                    onClick={(e)=>Apagar(pro.id)}
                                     />
                                     </td>
                                     
