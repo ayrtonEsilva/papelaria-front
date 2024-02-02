@@ -24,23 +24,23 @@ export default function Editarusuario(){
     }
 
     useEffect(()=>{
-        mostrardados();
-    },[banco])
-    async function mostrardados(idu) {
+
+        mostrardados(id);
+        
+        },[])
+        async function mostrardados(idu) {
+        
         let listaUser =JSON.parse(localStorage.getItem("cd-usuarios"));
-               listaUser.
-                   filter(value => value.id ==idu).
-                   map(value => {
-                       setNome(value.nome);
-                       setEmail(value.email);
-                       setSenha(value.senha);
-                       
-           
-           })
-
-
-
-         }
+        
+        listaUser.
+        filter(value => value.id ==idu).
+        map(value => {
+        setNome(value.nome);
+        setEmail(value.email);
+        setSenha(value.senha);
+        
+        })
+        }
 
 
     function salvardados(e){

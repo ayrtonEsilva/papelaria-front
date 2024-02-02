@@ -1,11 +1,11 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import '../../pages/global.css'
 import{ FiFilePlus }from "react-icons/fi";
 import { FaSave } from "react-icons/fa";
 import { GiCancel } from "react-icons/gi";
 import Menu from '../../componentes/menu';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import {Link, Navigate, useNavigate, useParams} from 'react-router-dom'
 import Head from '../../componentes/Head';
 
 
@@ -24,6 +24,7 @@ export default function Cadastroprodutos(){
         estoque_maximo
     }
 
+    
 
     function salvardados(e){
         e.preventDefault();
