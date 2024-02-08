@@ -69,7 +69,7 @@ export default function Cadastroprodutos(){
                         <input type='text'
                         value={descricao}
                         onChange={e=>setDescricao(e.target.value)}
-                         placeholder='Digite a dercição do produto' 
+                         placeholder='Digite a descrição do produto' 
                          />
 
 

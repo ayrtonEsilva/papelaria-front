@@ -9,20 +9,44 @@ import {Link, Navigate, useNavigate, useParams} from 'react-router-dom'
 import Head from '../../componentes/Head';
 
 
-export default function Cadastroprodutos(){
+export default function Editarprodutos(){
+    let { id } = useParams();
     const navigate = useNavigate();
-    const [id, setNome] = useState("");
     const [status, setStatus] = useState("");
     const [descricao, setDescricao] = useState("");
     const [estoque_minimo, setEstoque_minimo] = useState("");
     const [estoque_maximo, setEstoque_maximo] = useState("");
+    const [banco, setBanco] = useState([])
     const usuario={
-        id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
+        id,
         status,
         descricao,
         estoque_minimo,
         estoque_maximo
     }
+
+
+
+    useEffect(()=>{
+
+        mostrardados(id);
+        
+        },[])
+
+        async function mostrardados(idu) {
+        
+        let listaUser =JSON.parse(localStorage.getItem("cd-produtos"));
+        
+        listaUser.
+        filter(value => value.id ==idu).
+        map(value => {
+        setStatus(value.status);
+        setDescricao(value.descricao);
+        setEstoque_minimo(value.estoque_minimo);
+        setEstoque_maximo(value.estoque_maximo);
+        
+        })
+        }
 
     
 
@@ -41,8 +65,9 @@ export default function Cadastroprodutos(){
       if(i==0)
        {
          const banco =JSON.parse(localStorage.getItem("cd-produtos") || "[]");
-         banco.push(usuario);
-         localStorage.setItem("cd-produtos",JSON.stringify(banco));
+         let dadosnovos = banco.filter(item => item.id !== id);
+         dadosnovos.push(usuario);
+         localStorage.setItem("cd-produtos",JSON.stringify(dadosnovos));
          alert("Produto salvo com sucesso");
          navigate('/listaprodutos');
        }else{

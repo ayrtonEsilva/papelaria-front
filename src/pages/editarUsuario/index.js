@@ -18,6 +18,7 @@ export default function Editarusuario(){
     const [banco, setBanco] = useState([])
     const [status,setStatus] = useState(true);
     const usuario={
+        id,
         nome,
         email,
         senha
@@ -56,8 +57,9 @@ export default function Editarusuario(){
       if(i==0)
        {
          const banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-         banco.push(usuario);
-         localStorage.setItem("cd-usuarios",JSON.stringify(banco));
+         let dadosnovos = banco.filter(item => item.id !== id);
+         dadosnovos.push(usuario);
+         localStorage.setItem("cd-usuarios",JSON.stringify(dadosnovos));
          alert("Usuário salvo com sucesso");
          navigate('/listausuario');
        }else{

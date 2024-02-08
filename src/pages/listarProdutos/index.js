@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {Link} from 'react-router-dom'
 import Head from '../../componentes/Head';
 import Editarusuario from '../editarUsuario';
+import Editarprodutos from '../editarProdutos';
 
 
 
@@ -80,7 +81,7 @@ export default function Listaprodutos(){
                                     <Link to={`/editarprodutos/${pro.id}`} >
                                     <FiEdit size={20} 
                                     color='blue'
-                                    onClick={(e)=>Editarusuario}
+                                    onClick={(e)=>Editarprodutos}
                                     />
                                     </Link>
                                     </td>
