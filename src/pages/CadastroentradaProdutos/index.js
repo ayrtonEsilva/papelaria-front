@@ -32,7 +32,32 @@ export default function Cadastroentradaprodutos(){
     }
 
 
-
+    function alterarEstoque(idproduto, quantidade, valor) {
+        const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
+      
+     
+        const produtoExistente = estoque.find(item => item.id_produto === idproduto);
+      
+        if (produtoExistente) {
+    
+          let dadosnovos = estoque.filter(item => item.id_produto !== idproduto);
+          const updateestoque={
+                        id:produtoExistente.id,
+                        id_produto:produtoExistente.id_produto,
+                        qtde:produtoExistente.qtde+quantidade,
+                        valor_unitario:produtoExistente.valor_unitario=valor
+             }
+             dadosnovos.push(updateestoque);
+             localStorage.setItem("cd-estoques", JSON.stringify(dadosnovos));
+        } else {
+        
+    
+          estoque.push(dadosestoque);
+        }
+      
+        // Atualizar o localStorage com os novos dados do estoque
+        localStorage.setItem("cd-estoques", JSON.stringify(estoque));
+      }
 
 
     function salvardados(e){
@@ -46,17 +71,17 @@ export default function Cadastroentradaprodutos(){
         else if(data_entrada=="")
          i++;
       if(i==0)
-       {
-         const estoque =JSON.parse(localStorage.getItem("cd-estoques") || "[]");
-         const banco =JSON.parse(localStorage.getItem("cd-entradaprodutos") || "[]");
-         banco.push(entrada);
-         localStorage.setItem("cd-entradaprodutos",JSON.stringify(banco));
-         localStorage.setItem("cd-estoques",JSON.stringify(dadosestoque));
-         alert("Entrada do produto salvo com sucesso");
-         navigate('/listarentradaprodutos');
-       }else{
-        alert("Verifique! Há campos vazios!")
-       }
+      {
+        const  banco =JSON.parse(localStorage.getItem("cd-entradaprodutos")|| "[]");
+       
+        banco.push(entrada);
+        localStorage.setItem("cd-entradaprodutos",JSON.stringify(banco));
+        alterarEstoque(id_produto,qtde,valor_unitario) 
+        alert("Entrada salvo com sucesso");
+        navigate('/listaentrada');
+      }else{
+       alert("Verifique! Há campos vazios!")
+      }
         }
 
         function Carregarproduto(){
