@@ -22,33 +22,33 @@ export default function Listarsaidaprodutos(){
 
     function mostrardados()
     {
-        setBanco(JSON.parse(localStorage.getItem("cd-entradaprodutos") || "[]"));
+        setBanco(JSON.parse(localStorage.getItem("cd-saidaprodutos") || "[]"));
     }
 
-   const Apagar = (id) => {
-        confirmAlert({
-          title: 'Excluir entrada do produto',
-          message: 'Tem certeza que deseja excluir esta entrada do produto?',
-          buttons: [
-            {
-              label: 'Sim',
-              onClick: () => {
-                let dadosnovos = banco.filter(item => item.id !== id);
-                localStorage.setItem("cd-entradaprodutos", JSON.stringify(dadosnovos));
-                setBanco(dadosnovos);
-              }
-            },
-            {
-              label: 'Não',
-              onClick: () => alert('Click No')  
-            }
-          ]
-        });
-      };
+//    const Apagar = (id) => {
+//         confirmAlert({
+//           title: 'Excluir entrada do produto',
+//           message: 'Tem certeza que deseja excluir esta entrada do produto?',
+//           buttons: [
+//             {
+//               label: 'Sim',
+//               onClick: () => {
+//                 let dadosnovos = banco.filter(item => item.id !== id);
+//                 localStorage.setItem("cd-entradaprodutos", JSON.stringify(dadosnovos));
+//                 setBanco(dadosnovos);
+//               }
+//             },
+//             {
+//               label: 'Não',
+//               onClick: () => alert('Click No')  
+//             }
+//           ]
+//         });
+//       };
 
       function Mostrarproduto(id) {
         let descricao_produto= "";
-        let lista =JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+        let lista =JSON.parse(localStorage.getItem("cd-saidaprodutos") || "[]");
         lista.filter(item => item.id === id).map(value => {
             console.log(value.descricao)
             descricao_produto= value.descricao;
@@ -67,14 +67,14 @@ export default function Listarsaidaprodutos(){
             <Head title='Entrada de produtos'/>
             
                 <div>
-                    <Link to="/cadastroentradaprodutos" className='btn-novo'> Novo Produto</Link>
+                    <Link to="/cadastrosaidaprodutos" className='btn-novo'> Novo Produto</Link>
                 </div>
                 <table >
                     <tr>
                         <th>Id</th>
                         <th>Id produto</th>
                         <th>Quantidade</th> 
-                        <th>Data da entrada</th>
+                        <th>Data da saida</th>
                         <th>Valor do produto</th>
                     </tr>
                     {
@@ -88,14 +88,7 @@ export default function Listarsaidaprodutos(){
                                     <td>{entpro.data_entrada}</td>
                                     <td>{entpro.valor_unitario}</td>
                                     
-                                    <td className='botoes'> 
-                     
-                                    <FiTrash 
-                                    size={20} 
-                                    color='red'
-                                    onClick={(e)=>Apagar(entpro.id)}
-                                    />
-                                    </td>
+                                    
                                     
                                 </tr>
                             )

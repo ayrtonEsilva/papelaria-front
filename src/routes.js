@@ -1,15 +1,22 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Logon from './pages/logon';
+
 import Dashboard from './pages/dashboard';
+
 import Listausuario from './pages/listarUsuario';
-import Cadastrousuario from './pages/CadastroUsuário';
-import Editarusuario from './pages/editarUsuario';
 import Listarprodutos from './pages/listarProdutos';
-import Editarprodutos from './pages/editarProdutos';
-import Cadastroprodutos from './pages/CadastroProdutos';
 import Listarentradaprodutos from './pages/listarEntradaProduto';
-import Cadastroentradaprodutos from './pages/CadastroentradaProdutos';
 import Listaestoque from './pages/listarEstoque';
+import Listarsaidaprodutos from './pages/listaSaidaProduto';
+
+import Cadastrousuario from './pages/CadastroUsuário';
+import Cadastroprodutos from './pages/CadastroProdutos';
+import Cadastroentradaprodutos from './pages/CadastroentradaProdutos';
+import Cadastrosaidaprodutos from './pages/CadastrosaidaProdutos';
+
+import Editarusuario from './pages/editarUsuario';
+import Editarprodutos from './pages/editarProdutos';
+
 
 export default function Rotas(){
     return(
@@ -23,10 +30,12 @@ export default function Rotas(){
                 <Route path="/listaprodutos" element={<Listarprodutos />} />
                 <Route path="/listaentrada" element={<Listarentradaprodutos />} />
                 <Route path="/listaestoque" element={<Listaestoque />} />
+                <Route path="/listasaida" element={<Listarsaidaprodutos />} />
 
                 <Route path="/cadastrousuario" element={<Cadastrousuario />} />
                 <Route path="/cadastroprodutos" element={<Cadastroprodutos />} />
                 <Route path="/cadastroentradaprodutos" element={<Cadastroentradaprodutos />} />
+                <Route path="/cadastrosaidaprodutos" element={<Cadastrosaidaprodutos />} />
 
                 <Route path="/editarusuario/:id" element={<Editarusuario />} />
                 <Route path="/editarprodutos/:id" element={<Editarprodutos />} />
