@@ -20,14 +20,30 @@ export default function Listausuario(){
         mostrardados();
     },[])
 
-    function cep(){
-        const url = "viacep.com.br/ws/77807270/json/"
-        fetch(url)
-        .then(function( response){
-            //return response.json
-            console.log(response.json())
-        })
-    }
+    async function consultarCEP(cep){
+     
+        // Substitua a URL base pela URL específica do ViaCEP com o CEP desejado
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+      
+        // Utilizando o método fetch para fazer a requisição GET
+        return fetch(url)
+          .then(response => {
+            // Verifica se a requisição foi bem-sucedida (status 2xx)
+            if (!response.ok) {
+              throw new Error(`Erro ao consultar o CEP: ${response.status}`);
+            }
+      
+            // Parseia o JSON da resposta
+            return response.json();
+          })
+          .then(data => {
+            // Retorna os dados do CEP
+            return data;
+          })
+          .catch(error => {
+            console.error('Erro na requisição:', error);
+          });
+      }
 
     function mostrardados()
     {
