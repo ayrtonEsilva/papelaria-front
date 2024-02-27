@@ -4,14 +4,14 @@
 }
 
 .dashboard-container{
-    background-color: #1f28a7;
+    background-color: #000000;
     display: flex;
     height: 100vh;
     flex-direction: row;
 }
 .menu{
     width: 20%;
-    background-color: white;
+    background-color: #85b6ff;
     margin: 5px
     
 }
@@ -31,7 +31,7 @@ tr{
 
 }
 tr:hover{
-    background-color: rgb(173, 225, 255);
+    background-color: #b9d5ff;
 }
 td{
     
