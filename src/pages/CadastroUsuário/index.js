@@ -7,6 +7,7 @@ import Menu from '../../componentes/menu';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {Link, Navigate, useNavigate} from 'react-router-dom'
 import Head from '../../componentes/Head';
+import api from '../../server/api';
 
 
 export default function Cadastrousuario(){
@@ -34,11 +35,19 @@ export default function Cadastrousuario(){
        i++;
       if(i==0)
        {
-         const banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
-         banco.push(usuario);
-         localStorage.setItem("cd-usuarios",JSON.stringify(banco));
-         alert("Usuário salvo com sucesso");
-         navigate('/listausuario');
+        //  const banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+        //  banco.push(usuario);
+        //  localStorage.setItem("cd-usuarios",JSON.stringify(banco));
+        api.post('/usuario', usuario, 
+        {headers:{"Constent-Type":"application/json"}})
+        .then(function(response){
+            console.log(response.data)
+            alert(response.data.mensagem)
+        }
+
+        )
+         //alert("Usuário salvo com sucesso");
+         //navigate('/listausuario');
        }else{
         alert("Verifique! Há campos vazios!")
        }
