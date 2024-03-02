@@ -69,7 +69,7 @@ export default function Listausuario(){
                 // let dadosnovos = banco.filter(item => item.id !== id);
                 // localStorage.setItem("cd-usuarios", JSON.stringify(dadosnovos));
                 // setBanco(dadosnovos);
-                api.delete(`/usuario/"${id}`)
+                api.delete(`/usuario/${id}`)
                 .then(res=>{
                   if(res.status===200){
                     alert(`Você apagou o usuário id:${id}`);

@@ -2,27 +2,42 @@ import './styles.css'
 import Logo from '../../assets/img/logo2.jpg';
 import {useNavigate} from 'react-router-dom';
 import { useState } from 'react';
-
+import api from '../../server/api';
 
 export default function Logon(){
 const navigate = useNavigate();
 const [email, setEmail] = useState();
 const [senha, setSenha] = useState();
-
+const log = {
+    email,
+    senha
+}
 
 const logar =(e)=>{
-    e.preventDefault();
-    let banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
+     e.preventDefault();
+    // let banco =JSON.parse(localStorage.getItem("cd-usuarios") || "[]");
     
     
-    let dadosnovos = banco.filter(item => item.email === email && item.senha === senha);
-    console.log(banco);
-    if(dadosnovos.length>0){
-        navigate('/dashboard');
-    }else{
-        alert("Dados incorretos!!!");
-    }
-    
+    // let dadosnovos = banco.filter(item => item.email === email && item.senha === senha);
+    // console.log(banco);
+    // if(dadosnovos.length>0){
+    //     navigate('/dashboard');
+    // }else{
+    //     alert("Dados incorretos!!!");
+    // }
+    api.post('/usuario/login', log)
+    .then(function(response){
+        console.log(response.status);
+        if(response.status === 200){
+            navigate('/dashboard');
+        }
+    })
+    .catch(function(error){
+        console.error(error);
+    });
+
+
+
     
     }
 

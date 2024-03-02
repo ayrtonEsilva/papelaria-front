@@ -47,7 +47,7 @@ export default function Cadastrousuario(){
 
         )
          //alert("Usuário salvo com sucesso");
-         //navigate('/listausuario');
+         navigate('/listausuario');
        }else{
         alert("Verifique! Há campos vazios!")
        }
