@@ -30,6 +30,8 @@ const logar =(e)=>{
         console.log(response.status);
         if(response.status === 200){
             navigate('/dashboard');
+        }else{
+                
         }
     })
     .catch(function(error){
