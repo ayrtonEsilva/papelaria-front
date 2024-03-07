@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 import Head from '../../componentes/Head';
 import Editarusuario from '../editarUsuario';
 import Editarprodutos from '../editarProdutos';
-
+import api from '../../server/api';
 
 
 export default function Listaprodutos(){
@@ -23,7 +23,12 @@ export default function Listaprodutos(){
 
     function mostrardados()
     {
-        setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
+        // setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
+        api.get('/produtos')
+                .then(res=>{
+                    console.log(res.data.produtos)
+                    setBanco(res.data.produtos)
+                })
     }
 
    const Apagar = (id) => {

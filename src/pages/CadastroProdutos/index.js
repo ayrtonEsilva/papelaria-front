@@ -7,7 +7,7 @@ import Menu from '../../componentes/menu';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {Link, Navigate, useNavigate} from 'react-router-dom'
 import Head from '../../componentes/Head';
-
+import api from '../../server/api';
 
 export default function Cadastroprodutos(){
     const navigate = useNavigate();
@@ -39,11 +39,20 @@ export default function Cadastroprodutos(){
        i++;
       if(i==0)
        {
-         const banco =JSON.parse(localStorage.getItem("cd-produtos") || "[]");
-         banco.push(produtos);
-         localStorage.setItem("cd-produtos",JSON.stringify(banco));
-         alert("Produto salvo com sucesso");
-         navigate('/listaprodutos');
+        //  const banco =JSON.parse(localStorage.getItem("cd-produtos") || "[]");
+        //  banco.push(produtos);
+        //  localStorage.setItem("cd-produtos",JSON.stringify(banco));
+ 
+         //
+         api.post('/produtos', produtos, 
+        {headers:{"Constent-Type":"application/json"}})
+        .then(function(response){
+            console.log(response.data)
+            alert(response.data.mensagem)
+            //navigate('/listaprodutos');
+                }
+
+        )
        }else{
         alert("Verifique! Há campos vazios!")
        }
