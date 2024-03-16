@@ -7,6 +7,7 @@ import Menu from '../../componentes/menu';
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import {Link, Navigate, useNavigate} from 'react-router-dom'
 import Head from '../../componentes/Head';
+import api from '../../server/api';
 
 
 export default function Cadastroentradaprodutos(){
@@ -34,36 +35,36 @@ export default function Cadastroentradaprodutos(){
 
     
 
-  function alterarEstoque(idProduto, quantidade, valor) {
-    const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
-    const produtoExistente = estoque.find(item => item.id_produto === idProduto);
+  // function alterarEstoque(idProduto, quantidade, valor) {
+  //   const estoque = JSON.parse(localStorage.getItem("cd-estoques") || "[]");
+  //   const produtoExistente = estoque.find(item => item.id_produto === idProduto);
   
-    if (produtoExistente) {
-      const soma = parseFloat(produtoExistente.qtde) + parseFloat(quantidade);
-      const dadosNovos = estoque.map(item => {
-        if (item.id_produto === idProduto) {
-          return {
-            id: item.id,
-            id_produto: item.id_produto,
-            qtde: soma,
-            valor_unitario: valor
-          };
-        } else {
-          return item;
-        }
-      });
-      localStorage.setItem("cd-estoques", JSON.stringify(dadosNovos));
-    } else {
-      const dadosEstoque = {
-        id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
-        id_produto,
-        qtde: parseFloat(quantidade),
-        valor_unitario: valor
-      };
-      estoque.push(dadosEstoque);
-      localStorage.setItem("cd-estoques", JSON.stringify(estoque));
-    }
-  }
+  //   if (produtoExistente) {
+  //     const soma = parseFloat(produtoExistente.qtde) + parseFloat(quantidade);
+  //     const dadosNovos = estoque.map(item => {
+  //       if (item.id_produto === idProduto) {
+  //         return {
+  //           id: item.id,
+  //           id_produto: item.id_produto,
+  //           qtde: soma,
+  //           valor_unitario: valor
+  //         };
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     localStorage.setItem("cd-estoques", JSON.stringify(dadosNovos));
+  //   } else {
+  //     const dadosEstoque = {
+  //       id: Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9 * Math.pow(10, 12)).toString(36),
+  //       id_produto,
+  //       qtde: parseFloat(quantidade),
+  //       valor_unitario: valor
+  //     };
+  //     estoque.push(dadosEstoque);
+  //     localStorage.setItem("cd-estoques", JSON.stringify(estoque));
+  //   }
+  // }
 
 
     function salvardados(e){
@@ -78,24 +79,29 @@ export default function Cadastroentradaprodutos(){
          i++;
       if(i==0)
       {
-        const  banco =JSON.parse(localStorage.getItem("cd-entradaprodutos")|| "[]");
+        // const  banco =JSON.parse(localStorage.getItem("cd-entradaprodutos")|| "[]");
        
-        banco.push(entrada);
-        localStorage.setItem("cd-entradaprodutos",JSON.stringify(banco));
-        alterarEstoque(id_produto,qtde,valor_unitario) 
-        alert("Entrada salvo com sucesso");
-        navigate('/listaentrada');
-      }else{
-       alert("Verifique! Há campos vazios!")
-      }
+        // banco.push(entrada);
+        // localStorage.setItem("cd-entradaprodutos",JSON.stringify(banco));
+        // alterarEstoque(id_produto,qtde,valor_unitario) 
+        // alert("Entrada salvo com sucesso");
+        api.post('/entrada', entrada, 
+        {headers:{"Constent-Type":"application/json"}})
+        .then(function(response){
+            console.log(response.data)
+            alert(response.data.mensagem)
+            navigate('/listaentrada');
+        }
+        )
+      
         }
 
-        function Carregarproduto(){
-            setLista(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
-        }
-        useEffect(()=>{
-            Carregarproduto()
-        },[])
+        // function Carregarproduto(){
+        //     setLista(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
+        // }
+        // useEffect(()=>{
+        //     Carregarproduto()
+        // },[])
 
     return(
         <div className="dashboard-container">
@@ -108,7 +114,20 @@ export default function Cadastroentradaprodutos(){
 
                 <div class="form-container">
                     <form className='form-cadastro' onSubmit={salvardados}>
-                        <select 
+
+
+
+                    <select value={id_produto} onChange={e=>setId_produto(e.target.value)}  >
+                <option>Selecione um produto</option>
+                {
+                  lista.map((pro)=>{
+                    return(
+                      <option value={pro.id_produto}>{pro.descricao}</option>
+                    )
+                  })
+                }
+              </select>
+                        {/* <select 
                           value={id_produto}
                           onChange={e => setId_produto(e.target.value)}
                         >
@@ -124,7 +143,7 @@ export default function Cadastroentradaprodutos(){
                             })
                         }
                        
-                        </select>
+                        </select> */}
 
 
                         <input type='text' 
@@ -168,4 +187,4 @@ export default function Cadastroentradaprodutos(){
             
         </div>
     )
-}
+}}

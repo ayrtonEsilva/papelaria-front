@@ -26,8 +26,8 @@ export default function Listaprodutos(){
         // setBanco(JSON.parse(localStorage.getItem("cd-produtos") || "[]"));
         api.get('/produtos')
                 .then(res=>{
-                    console.log(res.data.produtos)
-                    setBanco(res.data.produtos)
+                    console.log(res.data.produto)
+                    setBanco(res.data.produto)
                 })
     }
 

@@ -16,12 +16,13 @@ export default function Listausuario(){
 
     
 
-    // useEffect(()=>{
-    //     mostrardados();
+    useEffect(()=>{
+        mostrardados();
+        
     //     consultarCEP("77807270").then(res=>{
     //       console.log(res)
-    //     })
-    // },[])
+        // })
+    },[])
 
     async function consultarCEP(cep){
      
