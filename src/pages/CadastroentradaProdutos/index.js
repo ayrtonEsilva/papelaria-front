@@ -31,7 +31,11 @@ export default function Cadastroentradaprodutos(){
         qtde,
         valor_unitario
     }
-
+    useEffect(()=>{
+    api.get("/produtos").then((res)=>{
+                setLista(res.data.produto)
+            });
+    },[])
 
     
 
@@ -102,7 +106,7 @@ export default function Cadastroentradaprodutos(){
         // useEffect(()=>{
         //     Carregarproduto()
         // },[])
-
+    }
     return(
         <div className="dashboard-container">
             <div className='menu'>
@@ -187,4 +191,4 @@ export default function Cadastroentradaprodutos(){
             
         </div>
     )
-}}
+}
